@@ -24,5 +24,60 @@ namespace Lab2._3
         {
             InitializeComponent();
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string fontName = ((sender as ComboBox).SelectedItem as TextBlock).Text;
+            if (textBox!=null)
+            {
+                textBox.FontFamily = new FontFamily(fontName);
+            }
+        }
+
+        private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            double TextHeight = Convert.ToDouble(((sender as ComboBox).SelectedItem as TextBlock).Text);
+            if (textBox != null)
+            {
+                textBox.FontSize = TextHeight;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (textBox.FontWeight == FontWeights.Normal)
+            {
+                textBox.FontWeight = FontWeights.Bold;
+            }
+            else textBox.FontWeight = FontWeights.Normal;
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (textBox.FontStyle == FontStyles.Italic)
+            {
+                textBox.FontStyle = FontStyles.Normal;
+            }
+            else textBox.FontStyle = FontStyles.Italic;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            if (textBox.TextDecorations == null)
+            {
+                textBox.TextDecorations = TextDecorations.Underline;
+            }
+            else textBox.TextDecorations = null;
+        }
+
+        private void RadioButton_Click(object sender, RoutedEventArgs e)
+        {
+            textBox.Foreground = Brushes.Black;
+        }
+
+        private void RadioButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            textBox.Foreground = Brushes.Red;
+        }
     }
 }
