@@ -25,5 +25,7 @@ namespace Lab2._3.Properties
                 return defaultInstance;
             }
         }
+
+        public object Position { get; internal set; }
     }
 }
