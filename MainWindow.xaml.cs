@@ -26,6 +26,28 @@ namespace Lab2._3
         {
             InitializeComponent();
         }
+        private void OpenExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Только текстовые файлы (*.txt)|*.txt";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                textBox.Text = File.ReadAllText(openFileDialog.FileName);
+            }
+        }
+        private void SaveExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Только текстовые файлы (*.txt)|*.txt";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                File.WriteAllText(saveFileDialog.FileName, textBox.Text);
+            }
+        }
+        private void CloseExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -103,5 +125,9 @@ namespace Lab2._3
             textBox.Foreground = Brushes.Red;
         }
 
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
